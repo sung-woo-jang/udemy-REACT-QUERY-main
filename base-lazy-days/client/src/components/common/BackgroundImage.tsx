@@ -1,7 +1,8 @@
-import { Image } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+//@ts-nocheck
+import { Image } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
-import splashImg from '../../images/splash.jpg';
+import splashImg from "../../images/splash.jpg";
 
 export function BackgroundImage(): ReactElement {
   return (
