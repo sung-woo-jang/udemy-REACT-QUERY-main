@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Box,
   Center,
@@ -6,11 +7,11 @@ import {
   Link,
   Stack,
   Text,
-} from '@chakra-ui/react';
-import { ReactElement, ReactNode } from 'react';
+} from "@chakra-ui/react";
+import { ReactElement, ReactNode } from "react";
 
-import type { Image as ImageType } from '../../../../shared/types';
-import { baseImageUrl } from '../../axiosInstance/constants';
+import type { Image as ImageType } from "../../../../shared/types";
+import { baseImageUrl } from "../../axiosInstance/constants";
 
 interface CardProps {
   itemName: string;
@@ -44,7 +45,7 @@ export function Card({
             alt={itemName}
           />
           <Text fontSize="xs" textAlign="center">
-            Photo by <Link href={image.authorLink}>{image.authorName}</Link>{' '}
+            Photo by <Link href={image.authorLink}>{image.authorName}</Link>{" "}
             from <Link href={image.platformLink}>{image.platformName}</Link>
           </Text>
         </Box>

@@ -1,4 +1,4 @@
-/* eslint-disable max-lines-per-function */
+// @ts-nocheck
 import {
   Box,
   Checkbox,

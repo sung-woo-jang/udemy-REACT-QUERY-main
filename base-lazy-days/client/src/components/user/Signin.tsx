@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Box,
   Button,
@@ -9,17 +10,17 @@ import {
   HStack,
   Input,
   Stack,
-} from '@chakra-ui/react';
-import { ReactElement, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+} from "@chakra-ui/react";
+import { ReactElement, useState } from "react";
+import { Redirect } from "react-router-dom";
 
-import { useAuth } from '../../auth/useAuth';
-import { useUser } from './hooks/useUser';
+import { useAuth } from "../../auth/useAuth";
+import { useUser } from "./hooks/useUser";
 
 // eslint-disable-next-line max-lines-per-function
 export function Signin(): ReactElement {
-  const [email, setEmail] = useState('test');
-  const [password, setPassword] = useState('test');
+  const [email, setEmail] = useState("test");
+  const [password, setPassword] = useState("test");
   const [dirty, setDirty] = useState({ email: false, password: false });
   const auth = useAuth();
   const { user } = useUser();

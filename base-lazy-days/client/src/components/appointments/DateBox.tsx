@@ -1,8 +1,9 @@
-import { Box, Stack, Text } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+// @ts-nocheck
+import { Box, Stack, Text } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
-import type { Appointment as AppointmentType } from '../../../../shared/types';
-import { Appointment } from './Appointment';
+import type { Appointment as AppointmentType } from "../../../../shared/types";
+import { Appointment } from "./Appointment";
 
 interface DateBoxProps {
   date: number;

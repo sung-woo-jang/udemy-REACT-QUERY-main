@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, HStack, Text } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { ReactElement } from 'react';

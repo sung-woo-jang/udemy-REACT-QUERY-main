@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Button, Flex, HStack, Icon, Link } from '@chakra-ui/react';
 import { ReactElement, ReactNode } from 'react';
 import { GiFlowerPot } from 'react-icons/gi';

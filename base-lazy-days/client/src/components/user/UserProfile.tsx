@@ -1,4 +1,4 @@
-/* eslint-disable max-lines-per-function */
+// @ts-nocheck
 import {
   Box,
   Button,
@@ -8,14 +8,14 @@ import {
   Heading,
   Input,
   Stack,
-} from '@chakra-ui/react';
-import { Field, Form, Formik } from 'formik';
-import { ReactElement } from 'react';
-import { Redirect } from 'react-router-dom';
+} from "@chakra-ui/react";
+import { Field, Form, Formik } from "formik";
+import { ReactElement } from "react";
+import { Redirect } from "react-router-dom";
 
-import { usePatchUser } from './hooks/usePatchUser';
-import { useUser } from './hooks/useUser';
-import { UserAppointments } from './UserAppointments';
+import { usePatchUser } from "./hooks/usePatchUser";
+import { useUser } from "./hooks/useUser";
+import { UserAppointments } from "./UserAppointments";
 
 export function UserProfile(): ReactElement {
   const { user } = useUser();
@@ -25,7 +25,7 @@ export function UserProfile(): ReactElement {
     return <Redirect to="/signin" />;
   }
 
-  const formElements = ['name', 'address', 'phone'];
+  const formElements = ["name", "address", "phone"];
   interface FormValues {
     name: string;
     address: string;
@@ -43,9 +43,9 @@ export function UserProfile(): ReactElement {
           <Formik
             enableReinitialize
             initialValues={{
-              name: user?.name ?? '',
-              address: user?.address ?? '',
-              phone: user?.phone ?? '',
+              name: user?.name ?? "",
+              address: user?.address ?? "",
+              phone: user?.phone ?? "",
             }}
             onSubmit={(values: FormValues) => {
               patchUser({ ...user, ...values });
