@@ -1,8 +1,9 @@
-import { Box, Heading, HStack } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+// @ts-nocheck
+import { Box, Heading, HStack } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
-import { useTreatments } from './hooks/useTreatments';
-import { Treatment } from './Treatment';
+import { useTreatments } from "./hooks/useTreatments";
+import { Treatment } from "./Treatment";
 
 export function Treatments(): ReactElement {
   // replace with data from React Query
