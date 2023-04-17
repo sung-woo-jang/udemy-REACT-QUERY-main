@@ -1,9 +1,10 @@
-import { User } from '../../../shared/types';
+import { User } from "../../../shared/types";
 
-const USER_LOCALSTORAGE_KEY = 'lazyday_user';
+const USER_LOCALSTORAGE_KEY = "lazyday_user";
 
 // helper to get user from localstorage
 export function getStoredUser(): User | null {
+  console.log("getStoredUser");
   const storedUser = localStorage.getItem(USER_LOCALSTORAGE_KEY);
   return storedUser ? JSON.parse(storedUser) : null;
 }
