@@ -1,10 +1,10 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 import type {
   Appointment,
   AppointmentDateMap,
   User,
-} from '../../../../shared/types';
+} from "../../../../shared/types";
 
 export function appointmentInPast(appointmentData: Appointment): boolean {
   const now = dayjs();
@@ -13,32 +13,32 @@ export function appointmentInPast(appointmentData: Appointment): boolean {
 
 export function getAppointmentColor(
   appointmentData: Appointment,
-  userId: number | undefined,
+  userId: number | undefined
 ): [string, string] {
   const taken = !!appointmentData.userId;
 
   if (taken || appointmentInPast(appointmentData)) {
-    const textColor = 'black';
-    const bgColor = appointmentData.userId === userId ? 'white' : 'gray.300';
+    const textColor = "black";
+    const bgColor = appointmentData.userId === userId ? "white" : "gray.300";
     return [textColor, bgColor];
   }
-  const textColor = 'white';
+  const textColor = "white";
 
   switch (appointmentData.treatmentName.toLowerCase()) {
-    case 'massage':
-      return [textColor, 'purple.700'];
-    case 'scrub':
-      return [textColor, 'blue.700'];
-    case 'facial':
-      return [textColor, 'green.700'];
+    case "massage":
+      return [textColor, "purple.700"];
+    case "scrub":
+      return [textColor, "blue.700"];
+    case "facial":
+      return [textColor, "green.700"];
     default:
-      return [textColor, 'black'];
+      return [textColor, "black"];
   }
 }
 
 export function getAvailableAppointments(
   appointments: AppointmentDateMap,
-  user: User | null,
+  user: User | null
 ): AppointmentDateMap {
   // clone so as not to mutate argument directly
   const filteredAppointments = { ...appointments };
@@ -48,7 +48,7 @@ export function getAvailableAppointments(
     filteredAppointments[date] = filteredAppointments[date].filter(
       (appointment: Appointment) =>
         (!appointment.userId || appointment.userId === user?.id) &&
-        !appointmentInPast(appointment),
+        !appointmentInPast(appointment)
     );
   });
 

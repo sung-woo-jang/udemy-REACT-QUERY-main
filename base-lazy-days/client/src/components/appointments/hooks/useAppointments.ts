@@ -1,24 +1,24 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import {
   Dispatch,
   SetStateAction,
   useCallback,
   useEffect,
   useState,
-} from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+} from "react";
+import { useQuery, useQueryClient } from "react-query";
 
-import { axiosInstance } from '../../../axiosInstance';
-import { queryKeys } from '../../../react-query/constants';
-import { useUser } from '../../user/hooks/useUser';
-import { AppointmentDateMap } from '../types';
-import { getAvailableAppointments } from '../utils';
-import { getMonthYearDetails, getNewMonthYear, MonthYear } from './monthYear';
+import { axiosInstance } from "../../../axiosInstance";
+import { queryKeys } from "../../../react-query/constants";
+import { useUser } from "../../user/hooks/useUser";
+import { AppointmentDateMap } from "../types";
+import { getAvailableAppointments } from "../utils";
+import { getMonthYearDetails, getNewMonthYear, MonthYear } from "./monthYear";
 
 // for useQuery call
 async function getAppointments(
   year: string,
-  month: string,
+  month: string
 ): Promise<AppointmentDateMap> {
   const { data } = await axiosInstance.get(`/appointments/${year}/${month}`);
   return data;
@@ -32,6 +32,12 @@ interface UseAppointments {
   showAll: boolean;
   setShowAll: Dispatch<SetStateAction<boolean>>;
 }
+
+// useQuery 및 prefetchQuery 모두에 대한 일반 옵션
+const commonOptions = {
+  staleTime: 0,
+  cacheTime: 1000 * 60 * 5,
+};
 
 // 이 Hook의 목적은 다음과 같습니다:
 
@@ -68,19 +74,24 @@ export function useAppointments(): UseAppointments {
   const { user } = useUser();
 
   const selectFn = useCallback(
-    (data) => getAvailableAppointments(data, user),
-    [user],
+    (data) => {
+      console.log(data);
+      return getAvailableAppointments(data, user);
+    },
+    [user]
   );
 
   /** ****************** END 2: filter appointments  ******************** */
   /** ****************** START 3: useQuery  ***************************** */
   // 현재 월의 예약에 대해 쿼리 호출 사용
+
   const queryClient = useQueryClient();
   useEffect(() => {
     const nextMonthYser = getNewMonthYear(monthYear, 1);
     queryClient.prefetchQuery(
       [queryKeys.appointments, nextMonthYser.year, nextMonthYser.month],
       () => getAppointments(nextMonthYser.year, nextMonthYser.month),
+      commonOptions
     );
   }, [queryClient, monthYear]);
 
@@ -97,7 +108,11 @@ export function useAppointments(): UseAppointments {
     () => getAppointments(monthYear.year, monthYear.month),
     {
       select: showAll ? undefined : selectFn,
-    },
+      ...commonOptions,
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      refetchOnWindowFocus: true,
+    }
   );
 
   /** ****************** END 3: useQuery  ******************************* */
