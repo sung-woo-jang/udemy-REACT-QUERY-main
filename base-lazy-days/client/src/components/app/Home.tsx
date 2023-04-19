@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { Icon, Stack, Text } from '@chakra-ui/react';
-import { ReactElement } from 'react';
-import { GiFlowerPot } from 'react-icons/gi';
+import { Icon, Stack, Text } from "@chakra-ui/react";
+import { ReactElement } from "react";
+import { GiFlowerPot } from "react-icons/gi";
 
-import { BackgroundImage } from '../common/BackgroundImage';
-import { usePrefetchTreatments } from '../treatments/hooks/useTreatments';
+import { BackgroundImage } from "../common/BackgroundImage";
+import { usePrefetchTreatments } from "../treatments/hooks/useTreatments";
 
 export function Home(): ReactElement {
   usePrefetchTreatments();

@@ -1,12 +1,13 @@
 // @ts-nocheck
-import { Spinner, Text } from '@chakra-ui/react';
-import { ReactElement } from 'react';
-import { useIsFetching } from 'react-query';
+import { Spinner, Text } from "@chakra-ui/react";
+import { ReactElement } from "react";
+import { useIsFetching, useIsMutating } from "react-query";
 
 export function Loading(): ReactElement {
   const isFetching = useIsFetching();
+  const isMutating = useIsMutating();
 
-  const display = isFetching ? 'inherit' : 'none';
+  const display = isFetching || isMutating ? "inherit" : "none";
 
   return (
     <Spinner

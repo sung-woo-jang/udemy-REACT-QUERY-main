@@ -1,13 +1,13 @@
 // @ts-nocheck
-import { Box, Button, Flex, HStack, Icon, Link } from '@chakra-ui/react';
-import { ReactElement, ReactNode } from 'react';
-import { GiFlowerPot } from 'react-icons/gi';
-import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { Box, Button, Flex, HStack, Icon, Link } from "@chakra-ui/react";
+import { ReactElement, ReactNode } from "react";
+import { GiFlowerPot } from "react-icons/gi";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 
-import { useAuth } from '../../auth/useAuth';
-import { useUser } from '../user/hooks/useUser';
+import { useAuth } from "../../auth/useAuth";
+import { useUser } from "../user/hooks/useUser";
 
-const Links = ['Treatments', 'Staff', 'Calendar'];
+const Links = ["Treatments", "Staff", "Calendar"];
 
 const NavLink = ({ to, children }: { to: string; children: ReactNode }) => (
   <Link
@@ -17,8 +17,8 @@ const NavLink = ({ to, children }: { to: string; children: ReactNode }) => (
     rounded="md"
     color="olive.200"
     _hover={{
-      textDecoration: 'none',
-      color: 'olive.500',
+      textDecoration: "none",
+      color: "olive.500",
     }}
     to={to}
   >
@@ -53,7 +53,7 @@ export function Navbar(): ReactElement {
               <Button onClick={() => signout()}>Sign out</Button>
             </>
           ) : (
-            <Button onClick={() => history.push('signin')}>Sign in</Button>
+            <Button onClick={() => history.push("signin")}>Sign in</Button>
           )}
         </HStack>
       </Flex>
